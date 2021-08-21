@@ -2,10 +2,12 @@
 var generateBtn = document.querySelector("#generate");
 
 // Array of special characters 
-var speicalCharacters = ["!,#$%&'()*+,-./:;<=>?@[\]^_`{|}~ "];
-var numbers = [0,1,2,3,4,5,6,7,8,9];
-var upperCaseLetters = ["A","B","CDEFGHIJKLMNOPQRSTUVWXYZ"];
-var lowerCaseLetters = ["abcdefghijklmnopqrstuvwxyz"]
+//var speicalCharacters = ["!,#$%&'()*+,-./:;<=>?@[\]^_`{|}~ "];
+var speicalCharacters = ['`','!','@','#','$','%','^','&','*','(',')','_','+','=','-','{','[','}',']',':',';','"','|','<','>','.','?','/',];
+// -- \ ' --
+var numbers = ['0','1','2','3','4','5','6','7','8','9'];
+var upperCaseLetters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var lowerCaseLetters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
 // User input variables
 var passwordLength = 0;
@@ -16,6 +18,14 @@ var useSpecialCharacters = true;
 
 var password = [];
 
+
+function requestUserInput(){
+  
+
+
+}
+
+
 // Write password to the #password input
 function writePassword() {
     
@@ -25,47 +35,53 @@ function writePassword() {
   var useNumbers = window.confirm("Do you want your password to contain numbers?");
   var useSpecialCharacters = window.confirm("Do you want your password to contain special characters?")
   
-  var characterCounter = 0;
 
-  for(let i = 0; i < passwordLength; i++){
-    console.log(i);
+var charactersToChooseFrom = [];
 
-    let charactersToChooseFrom = [];
-
-    if(useUpperCase == true){
-  
-      charactersToChooseFrom.push(upperCaseLetters);
-      characterCounter = characterCounter + upperCaseLetters.length;
+    if(useUpperCase === true){
+        charactersToChooseFrom = upperCaseLetters;
     }
-    if(useLowerCase == true){
-      charactersToChooseFrom.push(lowerCaseLetters);
-      characterCounter = characterCounter + lowerCaseLetters.length;
+    if(useLowerCase === true){
+      charactersToChooseFrom = charactersToChooseFrom.concat(lowerCaseLetters);
     }
-    if(useNumbers == true){
-      charactersToChooseFrom.push(numbers);
-      characterCounter = characterCounter + numbers.length;
+    if(useNumbers === true){
+      charactersToChooseFrom = charactersToChooseFrom.concat(numbers);
     }
-    if(useSpecialCharacters == true){
-      charactersToChooseFrom.push(speicalCharacters);
-      characterCounter = characterCounter + speicalCharacters.length;
+    if(useSpecialCharacters === true){
+      charactersToChooseFrom = charactersToChooseFrom.concat(speicalCharacters);
     }
 
+
+    console.log("characters to choose from ", charactersToChooseFrom); //all characters
+    console.log("characters to choose from.length ",charactersToChooseFrom.length) //4
+
+
+    function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+    }
+
+
+
+    for(let i = 0; i < passwordLength; i++){
     
+      password[i] = charactersToChooseFrom[getRandomIntInclusive(0,charactersToChooseFrom.length)];
 
-    console.log(charactersToChooseFrom);
-    console.log(charactersToChooseFrom.length)
-    console.log(characterCounter)
+    }
 
-  }
-
+    console.log(password.join(''));
+  
+  password = password.join('');
 
   //var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
+  //password = document.querySelector("#password");
 
   //Writes the new password to the HTML front-end
-  //passwordText.value = password;
-  passwordText.value = passwordLength;
+  passwordText.value = password;
+  //passwordText.value = passwordLength;
 
 }
 
