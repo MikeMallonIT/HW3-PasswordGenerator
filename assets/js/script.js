@@ -9,36 +9,37 @@ var numbers = ['0','1','2','3','4','5','6','7','8','9'];
 var upperCaseLetters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var lowerCaseLetters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
-
 var password = [];
 
-
-function getPasswordLength(){
-
-
-  return;
+//Random number generator the will generate a radom array address in the avalible characters array to set a given passward array address to
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
-
 
 // Write password to the #password input
 function writePassword() {
     
+  //Assign function variables
   var passwordLength = 0;
+  var charactersToChooseFrom = [];
 
+  //Ask user for password length while ensureing user enters a password length between 8 and 128 characters
   while(passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)==true){
-    var passwordLength = window.prompt("How long would you like your password to be? (8 - 128)");
+    var passwordLength = window.prompt("How many characters would you like your password to contain?\n\nMust be between 8 - 128");
   }
 
-  var useUpperCase = window.confirm("Do you want your password to contain upper case letters?");
-  var useLowerCase = window.confirm("Do you want your password to contain lower case letters?");
-  var useNumbers = window.confirm("Do you want your password to contain numbers?");
-  var useSpecialCharacters = window.confirm("Do you want your password to contain special characters?")
+  //Ask user for password conditions wile ensuring that at lease one condition is used
+  while(charactersToChooseFrom.length === 0){
+  var useUpperCase = window.confirm("Do you want your password to contain upper case letters?\n\nOK for Yes, Cancel for No\n\n*Please be sure to select Ok for at lease one*");
+  var useLowerCase = window.confirm("Do you want your password to contain lower case letters?\n\nOK for Yes, Cancel for No");
+  var useNumbers = window.confirm("Do you want your password to contain numbers?\n\nOK for Yes, Cancel for No");
+  var useSpecialCharacters = window.confirm("Do you want your password to contain special characters?\n\nOK for Yes, Cancel for No")
   
-
-var charactersToChooseFrom = [];
-
+    //If statements that generate the avalible characters that the password generator can pick from based on user input
     if(useUpperCase === true){
-        charactersToChooseFrom = upperCaseLetters;
+      charactersToChooseFrom = upperCaseLetters;
     }
     if(useLowerCase === true){
       charactersToChooseFrom = charactersToChooseFrom.concat(lowerCaseLetters);
@@ -49,39 +50,21 @@ var charactersToChooseFrom = [];
     if(useSpecialCharacters === true){
       charactersToChooseFrom = charactersToChooseFrom.concat(speicalCharacters);
     }
+  }
 
-
-    console.log("characters to choose from ", charactersToChooseFrom); //all characters
-    console.log("characters to choose from.length ",charactersToChooseFrom.length) //4
-
-
-    function getRandomIntInclusive(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
-    }
-
-
-
-    for(let i = 0; i < passwordLength; i++){
-    
-      password[i] = charactersToChooseFrom[getRandomIntInclusive(0,charactersToChooseFrom.length)];
-
-    }
-
-    console.log(password.join(''));
+  //Generate password array by assigning a random character from charactersToChooseFrom array. Loop until password array is as long as the user requested it be
+  for(let i = 0; i < passwordLength; i++){
+    password[i] = charactersToChooseFrom[getRandomIntInclusive(0,charactersToChooseFrom.length)];
+  }
   
+  //Join password array elements into string without commas
   password = password.join('');
 
-  //var password = generatePassword();
+  //Display password PasswordText in HTML #password element
   var passwordText = document.querySelector("#password");
 
-  //password = document.querySelector("#password");
-
-  //Writes the new password to the HTML front-end
+  //Assigns password to password text variable
   passwordText.value = password;
-  //passwordText.value = passwordLength;
-
 }
 
 // Triggeres writePassword function
