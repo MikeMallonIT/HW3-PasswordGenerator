@@ -3,21 +3,21 @@
 ## What I did
 This week's homework assignment provided us with the HTML and CSS code which served as a driver for the JavaScript code we wrote. I used JavaScript elements such as variables, arrays, if statements, loops and functions to achieve the task given.
 
-The JavaScript code that I wrote will ask the user a series of questions via browser window promps and confirm windows. Validation was added to ensure the user provided the appropriate password length and that he/she selected yes to at least on of the password elements.
+The JavaScript code that I wrote will ask the user a series of questions via browser window prompts and confirm windows. Validation was added to ensure the user provided the appropriate password length and that he/she selected yes to at least one of the password elements.
 
 <br>
 
 ### Motivation:
-This was the first application that I developed using JavaScript. We have gone through class assignements where small bits of code were written but this one chalenaged me and I have a far better understanding of how JavaScript works because of it. I am motivated to learn JavaScript because I know it is the bridge between website and server-side Node JS code that I want to learn how to develop.
+This was the first application that I developed using JavaScript. We have gone through class assignments where small bits of code were written but this one challenged me and I have a far better understanding of how JavaScript works because of it. I am motivated to learn JavaScript because I know it is the bridge between website and server-side Node JS code that I want to learn how to develop.
 
 <br>
 
 ### Problems I solved:
     * Developed generate password function
     * Referenced math random number library/function (see credits section)
-    * Used if statements to build avalible characters array
+    * Used if statements to build available characters array
     * Used loops to validate user input
-    * Used loop to insert random address of avalible characters aray to password array address
+    * Used loop to insert random address of available characters array to password array address
     * Used special characters to ensure single and double quotes could be used in the password as well as back slash
 <br />
 <br />
