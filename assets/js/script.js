@@ -2,20 +2,24 @@
 var generateBtn = document.querySelector("#generate");
 
 // Array of special characters 
-//var speicalCharacters = ["!,#$%&'()*+,-./:;<=>?@[\]^_`{|}~ "];
-var speicalCharacters = ['`','!','@','#','$','%','^','&','*','(',')','_','+','=','-','{','[','}',']',':',';','"','|','<','>','.','?','/',];
-// -- \ ' --
+var speicalCharacters = ['`','!','@','#','$','%','^','&','*','(',')','_','+','=','-','{','[','}',']',':',';','"','|','<','>','.','?','/',"'",'\\'];
+
+// Array of numbers
 var numbers = ['0','1','2','3','4','5','6','7','8','9'];
+
+//Upper and lower case letter arrays
 var upperCaseLetters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var lowerCaseLetters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
+//Password array
 var password = [];
 
 //Random number generator the will generate a radom array address in the avalible characters array to set a given passward array address to
+//Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 // Write password to the #password input
@@ -69,5 +73,3 @@ function writePassword() {
 
 // Triggeres writePassword function
 generateBtn.addEventListener("click", writePassword);
-
-
