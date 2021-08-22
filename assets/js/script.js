@@ -69,6 +69,10 @@ function writePassword() {
 
   //Assigns password to password text variable
   passwordText.value = password;
+
+  //Reset variables so new password is generated each time button is clicked
+  charactersToChooseFrom = [];
+  password = [];
 }
 
 // Triggeres writePassword function
