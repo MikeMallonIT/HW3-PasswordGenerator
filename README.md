@@ -26,7 +26,7 @@ This was the first application that I developed using JavaScript. We have gone t
 Download all associated files in this repository including the index.html file and all files in the assets folder. Style sheet is located in ../assets/css/style.css, JavaScript is located in ../assets/js/script/js
 
 ## Usage:
-The website has been deployed and can be accessed publicly by clicking [here](https://mikemallonit.github.io/HW3-PasswordGenerator/)
+The website has been deployed and can be accessed publicly by clicking [here](https://main.d26zih3hbchcru.amplifyapp.com/)
 
 The website should look like this:
 ![Website Screen Shot](./assets/websiteScreenshot.png)
